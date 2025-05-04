@@ -19,7 +19,7 @@ export const App = () => {
   const [newUserId, setNewUserId] = useState<number>(0);
   const [newCompleted, setNewCompleted] = useState(false);
   const [userError, setUserError] = useState(false);
-  const [titleError, settitleError] = useState(false);
+  const [titleError, setTitleError] = useState(false);
 
   const addTodo = (todo: Todo) => {
     setToDos(prevTodo => [...prevTodo, todo]);
@@ -29,7 +29,7 @@ export const App = () => {
     event.preventDefault();
 
     if (!newTitle.trim()) {
-      settitleError(true);
+      setTitleError(true);
     }
 
     if (!newUserId) {
@@ -40,7 +40,7 @@ export const App = () => {
       return;
     }
 
-    settitleError(false);
+    setTitleError(false);
     setUserError(false);
 
     const newTodo: Todo = {
@@ -71,7 +71,7 @@ export const App = () => {
             value={newTitle}
             onChange={e => {
               setNewTitle(e.target.value);
-              settitleError(false);
+              setTitleError(false);
             }}
           />
           {titleError && <span className="error">Please enter a title</span>}
